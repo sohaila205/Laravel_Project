@@ -14,5 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('posts');
 });
+Route::get('post', function () {
+    return view('post',['post' =>'<h1>posts</h1>']
+);
+});
+Route::get('postcontent/{post}', function ($slug) {
+    $post = file_get_contents(__DIR__. "/../resources/posts/{$slug}.html");
+
+    if( !file_exists($post))
+    {
+       return redirect('/');
+    }
+    
+    return view('postcontent',[
+       'post' =>$post]);
+})->whereAlpha('post'); 

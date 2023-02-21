@@ -1,0 +1,11 @@
+body {
+    background: rgb(216, 198, 200);
+    color: rgb(69, 26, 26);
+    max-width: 600px;
+    margin: auto;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+article+article {
+    padding-top: 3rem;
+}
