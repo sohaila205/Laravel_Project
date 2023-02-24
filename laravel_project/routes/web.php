@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,8 +15,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('posts');
+    return view('posts',[
+    'posts' => Post::all()
+]);
 });
+
+ Route::get('posts/{post}' , function(Post $post){
+
+    $post =Post::find($post);
+    return view('post',[
+        'post' => $post
+    ]);
+
+ });
+ Route::get('postcontent', function () {
+    return view('postcontent');
+});
+
+/* 
 Route::get('post', function () {
     return view('post',['post' =>'<h1>posts</h1>']
 );
@@ -30,4 +47,4 @@ Route::get('postcontent/{post}', function ($slug) {
     
     return view('postcontent',[
        'post' =>$post]);
-})->whereAlpha('post'); 
+})->whereAlpha('post');  */

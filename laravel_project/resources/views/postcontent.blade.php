@@ -1,6 +1,6 @@
-<h1>filecontent</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque omnis suscipit ducimus modi ea magnam doloribus cumque fugiat, illum consequatur excepturi dolores aut totam facere velit ex. Ex, veritatis consectetur?</p>
+<x-layout content="sohailaaaaaaaaa">
+<p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad asperiores ipsa maxime sequi laboriosam vero quidem, adipisci eos, consequuntur in consectetur ratione debitis nesciunt excepturi, quo laudantium sapiente. At, esse!
+</p>
 
-<article>
-    <a href="/">go-back</a>
-</article>
+</x-layout>
