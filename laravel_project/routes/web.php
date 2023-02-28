@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,12 @@ Route::get('/', function () {
 ]);
 });
 
+
+
  Route::get('posts/{post}' , function(Post $post){
 
-    $post =Post::find($post);
+   // $post =Post::find($post
+//);
     return view('post',[
         'post' => $post
     ]);
@@ -31,6 +35,18 @@ Route::get('/', function () {
  Route::get('postcontent', function () {
     return view('postcontent');
 });
+
+
+
+Route::get('categories/{category:name}' , function(Category $category){
+
+    return view('post',[
+        'post' => $category->post
+    ]);
+
+ });
+
+
 
 /* 
 Route::get('post', function () {
