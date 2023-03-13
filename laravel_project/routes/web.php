@@ -17,6 +17,7 @@ use App\Models\Category;
 */
 
 Route::get('/',[PostController::class,'index']);
+Route::get('filter/{categories}',[PostController::class,'filter']);
 
 
 
@@ -54,3 +55,4 @@ Route::get('postcontent/{post}', function ($slug) {
     return view('postcontent',[
        'post' =>$post]);
 })->whereAlpha('post');  */
+?>

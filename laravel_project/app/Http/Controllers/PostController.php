@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Post;
+use App\Models\Category;
 
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class PostController extends Controller
     public function index(){
     
     return view('posts',[
-    'posts' =>Post::latest()->filter(request(['search']))->get()
+    'posts' =>Post::latest()->filter(request(['search', 'category']))->get()
      //$this->getPosts()
     
     ]); }
@@ -29,12 +30,21 @@ class PostController extends Controller
 
 
 
-
-
-
-
+public function filter(Request $request){
+    $post = Post::query()->with('category');
+if ($request->categories) {
+    $post->whereHas('category', function ($query) use ($request) {
+        $query->where('category_id', $request->categories);
+    });
+}
+$post = $post->get();
+$categories = Category::all();
+return view('posts')->with([
+    'post' => $post,
+    'categories' => $categories]);
 }
 
+}
 
 
 

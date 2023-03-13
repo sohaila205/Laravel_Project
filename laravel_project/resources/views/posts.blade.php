@@ -7,7 +7,6 @@
     hello world
 
     
-    <article>
     </article>
     <article>
         <h1><a href="/post">2nd post </a></h1>
@@ -34,19 +33,16 @@
  
 
 <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
-  @if($posts->count())
     
-   <x-post_featured_card :post="$posts[0]" />
+   <x-post_featured_card :post="$post[0]" />
 
     <div class="lg:grid lg:grid-cols-2">
-    @foreach ($posts as $post )
+    @foreach ($post as $post )
     <x-post_card :post="$post"/>
 
     @endforeach
  
     </div>
-    @else
-    <p class="text-center">NO POSTS YET</p>
-  @endif
+    
 
 </main>

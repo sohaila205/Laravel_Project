@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable= ['title','excerpt','body','id'];
+   // protected $fillable= ['title','excerpt','body','id'];
+    protected $with = 'category';
 
     public function category(){
         return $this->belongsTo(Category::class);
@@ -25,5 +26,13 @@ class Post extends Model
            ->where('title','like','%'.$search.'%'));
                 
 //         }
+
+           $query->when($filters['category']?? false ,fn ($query,$category)
+           =>$query->whereHas('category', fn($query)=>
+           $query->where('posts.slug',$category)
+           )
+
+        );
     }
 }
+?>
